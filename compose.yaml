@@ -1,0 +1,7 @@
+﻿services:
+  rommanel.cliente.webapi:
+    image: rommanel.cliente.webapi
+    build:
+      context: .
+      dockerfile: src/services/Rommanel.Cliente.WebAPI/Dockerfile
+

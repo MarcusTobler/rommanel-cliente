@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <PackageId>DevPack.Data.EFCore</PackageId>
+        <Version>1.0.0</Version>
+        <Authors>Marcus Tobler</Authors>
+        <Company>Marcus Tobler</Company>
+        <Product>DevPack</Product>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DevPack.Data.EFCore.Abstractions\DevPack.Data.EFCore.Abstractions.csproj" />
+      <ProjectReference Include="..\DevPack.Domain.Mediator\DevPack.Domain.Mediator.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="9.0.4" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.4" />
+      <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.12.0" />
+    </ItemGroup>
+
+</Project>

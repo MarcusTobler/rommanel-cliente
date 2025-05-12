@@ -1,0 +1,6 @@
+@Rommanel.Cliente.WebAPI_HostAddress = http://localhost:5040
+
+GET {{Rommanel.Cliente.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

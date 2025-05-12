@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageId>DevPack.Domain.Core</PackageId>
+        <Version>1.0.4</Version>
+        <Authors>Marcus Tobler</Authors>
+        <Company>Marcus Tobler</Company>
+        <Product>DevPack</Product>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DevPack.Core\DevPack.Core.csproj" />
+      <ProjectReference Include="..\DevPack.Domain.Abstractions\DevPack.Domain.Abstractions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MongoDB.Bson" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Database\Repositories\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.2.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\devpacks\DevPack.Data.EFCore.Outbox\DevPack.Data.EFCore.Outbox.csproj" />
+      <ProjectReference Include="..\..\devpacks\DevPack.Data.EFCore\DevPack.Data.EFCore.csproj" />
+      <ProjectReference Include="..\Rommanel.Domain\Rommanel.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
