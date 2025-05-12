@@ -4,7 +4,7 @@ using DevPack.Domain.Abstractions;
 using DevPack.Domain.Core.Exceptions;
 using DevPack.Domain.Mediator;
 using DevPack.Domain.Mediator.Extensions;
-using DevPack.Domain.Messaging;
+using DevPack.Messaging.Domain;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;

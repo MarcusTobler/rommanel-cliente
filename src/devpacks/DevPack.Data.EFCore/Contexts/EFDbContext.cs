@@ -2,7 +2,7 @@ using System.Collections;
 using DevPack.Data.EFCore.Abstractions;
 using DevPack.Domain.Abstractions;
 using DevPack.Domain.Core.Exceptions;
-using DevPack.Domain.Messaging;
+using DevPack.Messaging.Domain;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;

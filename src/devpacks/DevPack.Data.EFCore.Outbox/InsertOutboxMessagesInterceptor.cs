@@ -1,9 +1,7 @@
-
 using DevPack.Domain.Abstractions;
-using DevPack.Domain.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace DevPack.Data.EFCore.Outbox;
 
@@ -22,16 +20,16 @@ public sealed class InsertOutboxMessagesInterceptor : SaveChangesInterceptor
         return base.SavingChangesAsync(eventData, result, cancellationToken);
     }
 
-    private static readonly JsonSerializerSettings SerializerSettings = new()
+    private static readonly JsonSerializerOptions SerializerOptions = new()
     {
-        TypeNameHandling = TypeNameHandling.All
+        WriteIndented = false
     };
-
+    
     private static void InsertOutboxMessages(DbContext context)
     {
         var domainEntities = context.ChangeTracker
             .Entries<IEntity>()
-            .Where(x => x.Entity.DomainEvents != null && x.Entity.DomainEvents.Any())
+            .Where(x => x.Entity.DomainEvents != null && x.Entity.DomainEvents.Count != 0)
             .ToArray();
         
         var outboxMessages = domainEntities
@@ -39,7 +37,7 @@ public sealed class InsertOutboxMessagesInterceptor : SaveChangesInterceptor
             .Select(domainEvent => new OutboxMessage(
                 Guid.NewGuid(), 
                 domainEvent.GetType().Name,
-                JsonConvert.SerializeObject(domainEvent, SerializerSettings),
+                JsonSerializer.Serialize(domainEvent, SerializerOptions),
                 DateTime.UtcNow))
             .ToList();
         
@@ -58,9 +56,9 @@ public sealed class InsertOutboxMessagesInterceptor : SaveChangesInterceptor
                 return domainEvents;
             })
             .Select(domainEvent => new OutboxMessage(
-                Guid.NewGuid(), 
+                Guid.NewGuid(),
                 domainEvent.GetType().Name,
-                JsonConvert.SerializeObject(domainEvent, SerializerSettings),
+                JsonSerializer.Serialize(domainEvent, SerializerOptions),
                 DateTime.UtcNow))
             .ToList();
         */

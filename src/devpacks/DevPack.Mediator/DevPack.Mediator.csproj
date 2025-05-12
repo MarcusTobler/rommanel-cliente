@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <PackageId>DevPack.Mediator</PackageId>
+        <Version>1.0.0</Version>
+        <Authors>Marcus Tobler</Authors>
+        <Company>Marcus Tobler</Company>
+        <Product>DevPack</Product>
+        <RootNamespace>DevPack.Domain.Mediator</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DevPack.Domain.Core\DevPack.Domain.Core.csproj" />
+      <ProjectReference Include="..\DevPack.Messaging.Abstractions\DevPack.Messaging.Abstractions.csproj" />
+      <ProjectReference Include="..\DevPack.Messaging\DevPack.Messaging.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    </ItemGroup>
+
+</Project>

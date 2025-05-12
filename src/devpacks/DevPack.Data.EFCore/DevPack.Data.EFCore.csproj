@@ -13,13 +13,13 @@
 
     <ItemGroup>
       <ProjectReference Include="..\DevPack.Data.EFCore.Abstractions\DevPack.Data.EFCore.Abstractions.csproj" />
-      <ProjectReference Include="..\DevPack.Domain.Mediator\DevPack.Domain.Mediator.csproj" />
+      <ProjectReference Include="..\DevPack.Mediator\DevPack.Mediator.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="9.0.4" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.4" />
-      <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.12.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
+      <PackageReference Include="OpenTelemetry.Extensions.Hosting" />
     </ItemGroup>
 
 </Project>

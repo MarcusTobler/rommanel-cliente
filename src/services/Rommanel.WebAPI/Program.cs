@@ -22,3 +22,8 @@ host.AddLoggerConfiguration();
 var app = builder.Build();
 
 app.UseApplicationServices();
+app.UserInfrastructureServices();
+
+app.UseDefaultOpenApi();
+
+app.Run();

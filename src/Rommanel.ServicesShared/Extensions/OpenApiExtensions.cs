@@ -1,4 +1,6 @@
 using Asp.Versioning;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -29,5 +31,19 @@ public static partial class Extensions
         services.AddSwaggerGen(options => options.OperationFilter<OpenApiDefaultValues>());
 
         return builder;
+    }
+    
+    public static IApplicationBuilder UseDefaultOpenApi(this WebApplication app)
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI(setup =>
+        {
+            app.DescribeApiVersions().ToList().ForEach(x => 
+                setup.SwaggerEndpoint($"{x.GroupName}/swagger.json", x.GroupName));
+        });
+            
+        app.MapGet("/", () => Results.Redirect("/swagger")).ExcludeFromDescription();
+        
+        return app;
     }
 }

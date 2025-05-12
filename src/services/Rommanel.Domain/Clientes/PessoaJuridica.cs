@@ -1,3 +1,5 @@
+using Rommanel.Domain.Clientes.Events;
+
 namespace Rommanel.Domain.Clientes;
 
 public class PessoaJuridica : Cliente

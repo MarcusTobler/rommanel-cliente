@@ -5,6 +5,7 @@ using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Rommanel.Infrastructure.Database.Context;
 using Rommanel.WebAPI.Configuration;
+using Rommanel.WebAPI.Routes;
 
 namespace Rommanel.WebAPI.Extensions;
 
@@ -19,9 +20,9 @@ public static class ServiceCollectionExtensions
         services.AddMediatR(config =>
         {
             config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-            //config.NotificationPublisher = new DomainEventPublisher();
-            //config.NotificationPublisherType = typeof(DomainEventPublisher);
-            //config.Lifetime = ServiceLifetime.Transient;
+            config.NotificationPublisher = new DomainEventPublisher();
+            config.NotificationPublisherType = typeof(DomainEventPublisher);
+            config.Lifetime = ServiceLifetime.Transient;
         });
 
         services.AddTransient<IMediatorHandler, MediatorHandler>();
@@ -44,10 +45,10 @@ public static class ServiceCollectionExtensions
         services.AddDbContext<RommanelDbContext>((serviceProvider, options) =>
         {
             options.UseNpgsql(
-                configuration.GetSection("RommanelConfiguration:ClaimsPostgreSQLConnectionString").Value);
+                configuration.GetSection("RommanelConfiguration:ClientePostgreSQLConnectionString").Value);
         });
         builder.EnrichNpgsqlDbContext<RommanelDbContext>();
-
+           
         services.AddCors(options =>
         {
             options.AddPolicy("Total", 
@@ -69,7 +70,22 @@ public static class ServiceCollectionExtensions
         }
         
         app.MapDefaultEndpoints();
+
+        var clienteRoutes = app.NewVersionedApi("clientes");
+        clienteRoutes.MapClienteRoutes();    
         
+        return app;
+    }
+    
+    public static IApplicationBuilder UserInfrastructureServices(this WebApplication app)
+    {
+        app.UseCors(configurePolicy =>
+        {
+            configurePolicy.AllowAnyHeader();
+            configurePolicy.AllowAnyMethod();
+            configurePolicy.AllowAnyOrigin();
+        });
+
         return app;
     }
 }

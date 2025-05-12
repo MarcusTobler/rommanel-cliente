@@ -19,7 +19,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\devpacks\DevPack.Data.EFCore.Extensions\DevPack.Data.EFCore.Extensions.csproj" />
       <ProjectReference Include="..\..\Rommanel.ServicesShared\Rommanel.ServicesShared.csproj" />
+      <ProjectReference Include="..\Rommanel.Application\Rommanel.Application.csproj" />
       <ProjectReference Include="..\Rommanel.Domain\Rommanel.Domain.csproj" />
       <ProjectReference Include="..\Rommanel.Infrastructure\Rommanel.Infrastructure.csproj" />
     </ItemGroup>

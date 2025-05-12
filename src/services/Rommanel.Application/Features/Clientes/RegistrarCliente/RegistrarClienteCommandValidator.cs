@@ -1,4 +1,4 @@
-using DevPack.Domain.Messaging.Commands;
+using DevPack.Messaging.Commands;
 using FluentValidation;
 
 namespace Rommanel.Application.Features.Clientes.RegistrarCliente;
