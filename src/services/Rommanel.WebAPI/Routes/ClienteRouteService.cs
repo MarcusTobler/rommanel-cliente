@@ -1,6 +1,6 @@
 namespace Rommanel.WebAPI.Routes;
 
-public class ClienteRouteService() : RouteServicesBase
+public class ClienteRouteService : RouteServicesBase
 {
     
 }

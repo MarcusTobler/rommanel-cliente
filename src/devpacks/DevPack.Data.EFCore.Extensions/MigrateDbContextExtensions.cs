@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 // ReSharper disable once CheckNamespace
 namespace Microsoft.AspNetCore.Hosting;
 
-internal static class MigrateDbContextExtensions
+public static class MigrateDbContextExtensions
 {
     private static readonly string ActivitySourceName = "DbMigrations";
     private static readonly ActivitySource ActivitySource = new(ActivitySourceName);

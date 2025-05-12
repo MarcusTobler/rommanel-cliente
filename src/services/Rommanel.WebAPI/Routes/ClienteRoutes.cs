@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Rommanel.Application.Features.Clientes.ObterClientes;
 using Rommanel.WebAPI.Models.Requests;
 
 namespace Rommanel.WebAPI.Routes;
@@ -45,9 +46,14 @@ public static class ClienteRoutes
         return clienteGroups;
     }
 
-    private static async Task<IResult> ObterClientesAsync()
+    private static async Task<IResult> ObterClientesAsync([AsParameters] ClienteRouteService service)
     {
-        return Results.Ok();
+        var clientes = await service.Mediator?
+            .SendQuery<ObterClientesQuery, IReadOnlyList<ClientesResponse>>(new ObterClientesQuery());
+        
+        return clientes is null 
+            ? Results.NotFound() 
+            : Results.Ok();
     }
     
     private static async Task<IResult> ObterClienteAsync(Guid clienteId)

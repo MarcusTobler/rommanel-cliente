@@ -44,11 +44,12 @@ public static class ServiceCollectionExtensions
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         services.AddDbContext<RommanelDbContext>((serviceProvider, options) =>
         {
-            options.UseNpgsql(
-                configuration.GetSection("RommanelConfiguration:ClientePostgreSQLConnectionString").Value);
+            options.UseNpgsql(configuration.GetConnectionString("rommaneldb"));
+            //configuration.GetSection("RommanelConfiguration:ClientePostgreSQLConnectionString").Value);
         });
         builder.EnrichNpgsqlDbContext<RommanelDbContext>();
-           
+        services.AddMigration<RommanelDbContext>();
+        
         services.AddCors(options =>
         {
             options.AddPolicy("Total", 

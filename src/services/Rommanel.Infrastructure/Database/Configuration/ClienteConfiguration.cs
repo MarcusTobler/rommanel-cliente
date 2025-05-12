@@ -63,5 +63,6 @@ public class ClienteConfiguration : IEntityTypeConfiguration<Cliente>
             .HasColumnName("excluido")
             .HasColumnType("boolean")
             .IsRequired();
+        
     }
 }

@@ -28,5 +28,9 @@ public class PessoaJuridicaConfiguration : IEntityTypeConfiguration<PessoaJuridi
             .HasColumnName("inscricaoestadual")
             .HasColumnType("varchar(10)")
             .IsRequired();
+
+        builder.HasOne(p => p.Cliente)
+            .WithOne(p => p.PessoaJuridica)
+            .HasForeignKey<PessoaJuridica>(p => p.Id);
     }
 }

@@ -9,7 +9,7 @@ public class DbReadOnly : IDbReadOnly
     
     public DbReadOnly(string? connectionString = null)
     {
-        Connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=ctaclaimstrack;User ID=claimstrack;Password=s4dkL5SALkrj3dZ;");
+        Connection = new NpgsqlConnection("rommaneldb");
         Connection.Open();
     }
 

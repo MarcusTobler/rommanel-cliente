@@ -28,6 +28,9 @@ public class PessoaFisicaConfiguration : IEntityTypeConfiguration<PessoaFisica>
             .HasColumnName("datanascimento")
             .HasColumnType("date")
             .IsRequired();
-        
+
+        builder.HasOne(p => p.Cliente)
+            .WithOne(p => p.PessoaFisica)
+            .HasForeignKey<PessoaFisica>(p => p.Id);
     }
 }

@@ -14,7 +14,7 @@ public class RegistrarClienteCommandHandler : CommandHandler, IRequestHandler<Re
         return command.Tipo switch
         {
             1 => await CriarPessoaFisica(
-                PessoaFisica.Criar(
+                PessoaFisica.Criar(Guid.NewGuid(), 
                     command.PessoaFisica.Nome, 
                     command.PessoaFisica.Cpf,
                     command.PessoaFisica.DataNascimento, 
@@ -29,7 +29,7 @@ public class RegistrarClienteCommandHandler : CommandHandler, IRequestHandler<Re
                     command.Endereco.Cidade,
                     command.Endereco.Estado))),
             2 => await CriarPessoaJuridica(
-                PessoaJuridica.Criar(
+                PessoaJuridica.Criar(Guid.NewGuid(), 
                     command.PessoaJuridica.RazaoSocial,
                     command.PessoaJuridica.Cnpj, 
                     command.PessoaJuridica.InscricaoEstadual, 
